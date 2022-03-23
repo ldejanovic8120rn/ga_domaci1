@@ -1,0 +1,14 @@
+subprocess.call(["gcc", "-Wall", "c_file.c", "-o", "c_file"])
+
+I nacin:
+
+    process = subprocess.run(args, capture_output=True)
+    stdout_as_str = process.stdout.decode("utf-8")
+    print('OUTPUT: ' + stdout_as_str)
+
+II nacin:
+    process = subprocess.Popen(args, stdout=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    if stdout:
+        print('STDOUT: ' + stdout.decode("utf-8"))
