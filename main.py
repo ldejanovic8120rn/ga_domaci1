@@ -22,3 +22,4 @@ chromosome_cost = algorithms.calc_cost(algorithms.decode(chromosome, P_L, P_H, B
 
 population = algorithms.create_population(POP_NUM, BITS_NUM*COEFF_NUM, P_L, P_H, BITS_NUM)
 # population = sorted(population, key=lambda x: abs(x[0] - chromosome_cost))
+
