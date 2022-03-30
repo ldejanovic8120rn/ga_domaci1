@@ -4,15 +4,14 @@ import matplotlib.pyplot as plt
 
 
 # constants
-POP_NUM = 50
+POP_NUM = 10
 BITS_NUM = 5
 COEFF_NUM = 33
-P_L = -3.0
-P_H = 3.0
+P_L = -10.0
+P_H = 10.0
 TOURNAMENT_SIZE = 4
 PROBABILITY = 0.2
 MAX_ITER = 150
-
 
 
 # kompajliranje C programa
