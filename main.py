@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 # constants
-POP_NUM = 10
+POP_NUM = 50
 BITS_NUM = 5
 COEFF_NUM = 33
 P_L = -3.0
@@ -20,6 +20,21 @@ def compile_c_program():
     subprocess.call(compile_args)
 
 
+def draw(datas, title):
+    cnt = 1
+    for data in datas:
+        xs = [d[0] for d in data]
+        ys = [d[1] for d in data]
+        plt.plot(xs, ys, label=str(cnt))
+        cnt += 1
+
+    plt.xlabel('generations')
+    plt.ylabel('cost')
+    plt.legend()
+    plt.title(title)
+    plt.show()
+
+
 def nn():
     average_cost_all = []
     best_cost_all = []
@@ -27,7 +42,7 @@ def nn():
     best_ever_sol = None
     best_ever_f = None
 
-    for i in range(0, 1):
+    for i in range(0, 3):
         average_cost = []
         best_cost = []
         best = None
@@ -68,15 +83,8 @@ def nn():
 
     print(best_ever_f)
 
-    bca = average_cost_all[0]
-    xs = []
-    ys = []
-    for t in bca:
-        xs.append(t[0])
-        ys.append(t[1])
-
-    plt.plot(xs, ys, scaley='log')
-    plt.show()
+    draw(best_cost_all, 'BEST')
+    draw(average_cost_all, 'AVERAGE')
 
 
 if __name__ == '__main__':
