@@ -14,6 +14,7 @@ PROBABILITY = 0.2
 MAX_ITER = 150
 
 
+
 # kompajliranje C programa
 def compile_c_program():
     compile_args = ['gcc', '-Wall', 'g.c', '-o', 'g', '-lm']
@@ -52,7 +53,7 @@ def nn():
         population = algorithms.create_population(POP_NUM, COEFF_NUM*BITS_NUM, P_L, P_H, BITS_NUM)
         while best_f != 0 and k < MAX_ITER:
             n_population = population[:]
-            while len(n_population) < 2*POP_NUM:
+            while len(n_population) < POP_NUM + 10:
                 ch1 = algorithms.tournament(population, TOURNAMENT_SIZE)
                 ch2 = algorithms.tournament(population, TOURNAMENT_SIZE)
                 ch3, ch4 = algorithms.crossover(ch1, ch2)
