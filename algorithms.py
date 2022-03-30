@@ -47,17 +47,16 @@ def calc_cost(genes):
 
 # kreiranje populacije
 def create_population(pop_num, ch_size, p_l, p_h, bits_num):
-    population = [[random.randint(0, 1) for _ in range(0, ch_size)] for _ in range(0, pop_num)]
-    population_tuple = []
+    population = []
+    for _ in range(0, pop_num):
+        ch = [random.randint(0, 1) for _ in range(0, ch_size)]
+        population.append((calc_cost(decode(ch, p_l, p_h, bits_num)), ch))
 
-    for p in population:
-        population_tuple.append((calc_cost(decode(p, p_l, p_h, bits_num)), p))
-
-    return population_tuple
+    return population
 
 
 # biranje hromozoma za parenje
-def tournament(population, size, ch_cost):
+def tournament(population, size):
     picked = []
     for _ in range(0, size):
         picked.append(random.choice(population))
@@ -65,7 +64,7 @@ def tournament(population, size, ch_cost):
     best = None
     best_cost = None
     for p in picked:
-        cost = abs(p[0] - ch_cost)
+        cost = p[0]
         if best_cost is None or best_cost > cost:
             best = p[1]
             best_cost = cost
