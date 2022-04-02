@@ -15,14 +15,6 @@ params = {
     'PROBABILITY': 0.2,
     'MAX_ITER': 150
 }
-# POP_NUM = 10
-# BITS_NUM = 5
-# COEFF_NUM = 33
-# P_L = -10.0
-# P_H = 10.0
-# TOURNAMENT_SIZE = 4
-# PROBABILITY = 0.2
-# MAX_ITER = 150
 
 
 # kompajliranje C programa
@@ -44,16 +36,17 @@ def read_config_file():
                 f = open(path, 'r')
                 lines = f.read().splitlines()
                 for line in lines:
-                    s = line.split(' ')
-                    res = float(s[1]) + 10
-                    print(res)
+                    key, value = line.split('=')
+                    if key == 'P_L' or key == 'P_H' or key == 'PROBABILITY':
+                        params[key] = float(value)
+                    else:
+                        params[key] = int(value)
 
                 f.close()
                 break
             except FileNotFoundError:
                 print('File not found!')
-            print(path)
-            break
+
         elif choice == 'n':
             break
         else:
@@ -76,16 +69,19 @@ def draw(datas, title):
 
 
 def nn():
+    print('Please, insert the output file: ')
+    output_file = input()
+    f = open(output_file, 'w')
+
     average_cost_all = []
     best_cost_all = []
 
-    best_ever_sol = None
     best_ever_f = None
 
     for i in range(0, 3):
+        f.write('TEST CASE: ' + str(i+1) + '\n\n')
         average_cost = []
         best_cost = []
-        best = None
         best_f = None
         k = 0
 
@@ -107,25 +103,27 @@ def nn():
                                                                             params['BITS_NUM'])), ch4))
 
             population = sorted(n_population, key=lambda x: x[0])[:params['POP_NUM']]
-            cost = population[0][0]
 
+            cost = population[0][0]
+            average = sum([p[0] for p in population])/params['POP_NUM']
+            average_cost.append((k, average))
             best_cost.append((k, cost))
-            average_cost.append((k, sum([p[0] for p in population])/params['POP_NUM']))
+
+            f.write(str(k+1) + '. - best = ' + str(round(cost, 2)) + ', average = ' + str(round(average, 2)) + '\n')
 
             if best_f is None or best_f > cost:
-                best = population[0][1]
                 best_f = cost
             k += 1
 
         if best_ever_f is None or best_ever_f > best_f:
             best_ever_f = best_f
-            best_ever_sol = best
 
         best_cost_all.append(best_cost)
         average_cost_all.append(average_cost)
+        f.write('----------------------------------------------------------\n')
 
-    print(best_ever_f)
-
+    f.write('BEST EVER: ' + str(round(best_ever_f, 2)) + '\n')
+    f.close()
     draw(best_cost_all, 'BEST')
     draw(average_cost_all, 'AVERAGE')
 
@@ -133,4 +131,6 @@ def nn():
 if __name__ == '__main__':
     print('Program started!')
     # compile_c_program()
+    read_config_file()
+    print(params)
     nn()
