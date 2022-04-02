@@ -8,7 +8,8 @@
 
 ### 3. Način konfigurisanje programa:
   - Može se kreirati po želji konfiguracioni fajl, koji će biti prosleđen programu preko komandne linije
-  - U konfiguracionom fajlu zadavati parametre u obliku: POP_NUM=10 (primer konfiguracionog fajla - **config1.txt**)
+  - U konfiguracionom fajlu zadavati parametre u obliku: POP_NUM=10 
+  - Primer konfiguracionog fajla - [**config1.txt**](https://github.com/ldejanovic8120rn/ga_domaci1/blob/master/config1.txt)
   - Parametri konfiguracionog fajla (mogu biti u proizvoljnom redosledu i ne moraju svi biti navedeni):
     - **POP_NUM** - broj populacije (int)
     - **NPOP_NUM** - broj dobijenih jedinki (int)
