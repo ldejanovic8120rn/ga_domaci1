@@ -21,7 +21,10 @@
     - **PROBABILITY** - verovatnoća mutacije
     - **MAX_ITER** - maksimalan broj generacija
 
-### 4. Kod se može kompajlirati i pokrenuti na lokalnoj mašini komandom:
+### 4. Kompajliranje g.c programa:
+  - Potrebno je pre pokretanja kompajlirati g.c program ili otkomentarisati metodu **compile_c_program()**, koja automatski kompajlira g.c program
+
+### 5. Kod se može kompajlirati i pokrenuti na lokalnoj mašini komandom:
 ```bash
 python main.py
 ```
