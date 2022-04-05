@@ -132,5 +132,5 @@ if __name__ == '__main__':
     print('Program started!')
     # compile_c_program()
     read_config_file()
-    print(params)
+    print('PARAMS: ' + str(params))
     nn()
