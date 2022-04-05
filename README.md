@@ -24,7 +24,7 @@
 ### 4. Kompajliranje g.c programa:
   - Potrebno je pre pokretanja kompajlirati g.c program ili otkomentarisati metodu **compile_c_program()**, koja automatski kompajlira g.c program i nakon toga se može pokrenuti program komandom navedenom u koraku 5.
 
-### 5. Kod se može kompajlirati i pokrenuti na lokalnoj mašini komandom:
+### 5. Kod se može pokrenuti na lokalnoj mašini komandom:
 ```bash
 python main.py
 ```
