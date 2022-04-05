@@ -1,6 +1,6 @@
 # Genetski algoritmi - domaci 1
 
-### 1. Zadatak je implementiran u programskom jeziku - Java
+### 1. Zadatak je implementiran u programskom jeziku - Python
 ### 2. Eksterne biblioteke koje program koristi su:
   - subprocess
   - math
